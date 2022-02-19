@@ -29,8 +29,16 @@ Route::get('/cc', function() {
 //admin route
 require('admin.php');
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::group(['namespace' => 'Front'], function () {
+	Route::get('all-users', 'HomeController@fetch_users')->name('front.users');
+	Route::get('all-ideas', 'HomeController@fetch_ideas')->name('front.ideas');
+	Route::get('first-phase', 'HomeController@count_idea')->name('front.count_idea');
+	Route::get('second-phase', 'HomeController@check_second_five_minute')->name('front.second_phase');
+	Route::get('final-phase', 'HomeController@check_final_five_minute')->name('front.final_phase');
+});
+
+// Route::get('/admin/dashboard', function () {
+//     return view('admin.dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

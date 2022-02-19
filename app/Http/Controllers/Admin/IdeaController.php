@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Idea;
+use Auth;
 
 class IdeaController extends Controller
 {
     public function index()
     {
-    	$ideas = Idea::all();
+    	// $ideas = Idea::with('user')->get();
+      $ideas = Idea::with('user')->where('user_id', Auth::id())->get();
     	return view('admin.ideas.index', compact('ideas'));
     }
 
@@ -47,6 +49,7 @@ class IdeaController extends Controller
     	$idea->email = $request->email;
     	$idea->status = $request->status;
     	$idea->idea = $request->idea;
+      $idea->user_id = Auth::id();
     	$idea->save();
     	return redirect('admin/ideas');
     }

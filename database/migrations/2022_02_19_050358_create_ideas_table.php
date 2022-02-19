@@ -20,6 +20,7 @@ class CreateIdeasTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->text('idea');
             $table->integer('status')->default(1);
+            $table->tinyInteger('is_used')->default(0);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

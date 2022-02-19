@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('front.master')
 @section('body')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>DataTables</h1>
+            <h1>Users</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Ideas</li>
+              <li class="breadcrumb-item active">Users</li>
             </ol>
           </div>
         </div>
@@ -25,7 +25,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">All Ideas</h3>
+                <h3 class="card-title">All Users</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -33,26 +33,16 @@
                   <thead>
                   <tr>
                     <th>SI</th>
-                    <th>User</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Idea</th>
-                    <th>Status</th>
-                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                    @foreach($ideas as $key => $idea)
+                    @foreach($users as $key => $user)
                       <tr>
                         <td>{{ ++$key }}</td>
-                        <td>{{ $idea->user->name }}</td>
-                        <td>{{ $idea->name }}</td>
-                        <td>{{ $idea->email }}</td>
-                        <td>{{ $idea->idea }}</td>
-                        <td>{{ $idea->status == 1 ? 'Active' : 'Inactive' }}</td>
-                        <td>
-                          <a href="{{ route('ideas.edit', $idea->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                        </td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
                       </tr>
                     @endforeach
                   </tbody>

@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('front.master')
 @section('body')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>DataTables</h1>
+            <h1>Ideas</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
