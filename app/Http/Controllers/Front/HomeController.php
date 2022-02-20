@@ -95,7 +95,7 @@ class HomeController extends Controller
     				$tournament->update();
 
     				$user = User::find($secondWinners[$final_winners]);
-    				Mail::to($user->email)->send(new WinnerMail($tournament));
+    				Mail::to($user->email)->send(new WinnerMail());
     			}
 
     			// if($tournaments['t_id'][$i] == $tournament->id) {

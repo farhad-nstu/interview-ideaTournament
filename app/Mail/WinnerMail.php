@@ -11,13 +11,21 @@ class WinnerMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $tournament;
-
-    public function __construct($tournament)
+    /**
+     * Create a new message instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        $this->tournament = $tournament;
+        //
     }
-    
+
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
     public function build()
     {
         return $this->markdown('emails.winnerMail');
