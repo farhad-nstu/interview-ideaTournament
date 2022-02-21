@@ -110,13 +110,14 @@
     <script>
       function check_string() {
         var weight = $("#weight").val();
-        var r = /^0-9gm$/;
-        ; // true
-        if(r.test(weight)) {
-          alert("ok")
-        } else {
-          alert("wrong")
-        }
+        // /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        var r = /([0-9](gm|kg))+\-([0-9](gm|kg))/;
+
+        // if(r.test(weight)) {
+        //   alert("ok")
+        // } else {
+        //   alert("wrong")
+        // }
       }
     </script>
   @endpush
