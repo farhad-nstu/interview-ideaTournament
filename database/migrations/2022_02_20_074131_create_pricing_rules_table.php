@@ -21,6 +21,7 @@ class CreatePricingRulesTable extends Migration
             $table->string('route');
             $table->string('delivery_type');
             $table->string('expired_date');
+            $table->float('shipping_cost');
             $table->timestamps();
         });
     }

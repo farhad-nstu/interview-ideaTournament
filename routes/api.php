@@ -24,9 +24,5 @@ Route::post('register', 'ApiController@register');
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('logout', 'ApiController@logout');
     Route::get('get-user', 'ApiController@get_user');
-    // Route::get('products', [ProductController::class, 'index']);
-    // Route::get('products/{id}', [ProductController::class, 'show']);
-    // Route::post('create', [ProductController::class, 'store']);
-    // Route::put('update/{product}',  [ProductController::class, 'update']);
-    // Route::delete('delete/{product}',  [ProductController::class, 'destroy']);
+    Route::post('get-shipping-cost', 'ApiController@get_shipping_cost');
 });

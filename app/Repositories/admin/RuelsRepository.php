@@ -37,6 +37,7 @@ class RuelsRepository
     	$rule->route = $request->route;
     	$rule->expired_date = $request->expired_date;
     	$rule->delivery_type = $request->delivery_type;
+        $rule->shipping_cost = $request->shipping_cost;
 
     	$weight = $request->weight;
     	$firstPart = substr($weight, 0, strpos($weight, '-'));

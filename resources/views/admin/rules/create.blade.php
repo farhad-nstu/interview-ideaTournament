@@ -88,6 +88,13 @@
                         <span class="text-danger"> {{$errors->first('expired_date')}}</span>
                     @endif
                   </div>
+                  <label class="col-md-2" for="shipping_cost">Shipping Cost <code>*</code></label>
+                  <div class="col-md-4">
+                    <input type="text" name="shipping_cost" value="getValue('shipping_cost', $rule)" placeholder="Enter Shipping Cost" required>
+                    @if($errors->has('shipping_cost'))
+                        <span class="text-danger"> {{$errors->first('shipping_cost')}}</span>
+                    @endif
+                  </div>
                 </div>
 
                 <div class="form-group row">

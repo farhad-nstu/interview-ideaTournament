@@ -37,6 +37,7 @@
                     <th>Delivery Type</th>
                     <th>Route</th>
                     <th>Weight</th>
+                    <th>Shipping Cost</th>
                     <th>Expire Date</th>
                     <th>Action</th>
                   </tr>
@@ -63,6 +64,7 @@
                             {{ $rule->max_weight / 1000 }}kg
                           @endif
                         </td>
+                        <td>{{ $rule->shipping_cost }}</td>
                         <td>{{ $rule->expired_date }}</td>
                         <td>
                           <a href="{{ route('rules.edit', $rule->id) }}" class="btn btn-sm btn-primary">Edit</a>&nbsp;&nbsp;

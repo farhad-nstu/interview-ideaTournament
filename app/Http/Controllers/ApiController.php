@@ -9,6 +9,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use App\Models\PricingRule;
 
 class ApiController extends Controller
 {
@@ -81,9 +82,23 @@ class ApiController extends Controller
         ]);
     }
 
+    public function get_shipping_cost(Request $request) 
+    {
+        $shippingCostData = PricingRule::where(['delivery_type' => $request->delivery_type, 'route' => $request->route])
+                ->where('min_weight', '<=', $request->weight)
+                ->where('max_weight', '>=', $request->weight)
+                ->where('expired_date', '>=', date('Y-m-d'))
+                ->pluck('shipping_cost')
+                ->first();
+        if(empty($shippingCostData)) {
+            $shippingCostData = 0;
+        }
+
+        return response()->json(['cost' => $shippingCostData]);
+    }
+
     public function get_user(Request $request)
     {
-        dd($request->all());
         $this->validate($request, [
             'token' => 'required'
         ]);
