@@ -5,4 +5,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware'=>'auth']
 
 	// Route::resource('ideas', IdeaController::class);
 	Route::resource('rules', RuelsController::class);
+	Route::resource('urlShorten', UrlShortenController::class);
+
 });

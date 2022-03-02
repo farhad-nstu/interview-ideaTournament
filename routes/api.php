@@ -18,11 +18,14 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::post('login', 'ApiController@authenticate');
-Route::post('register', 'ApiController@register');
+// Route::post('login', 'ApiController@authenticate');
+// // Route::post('login', 'ApiController@authenticate');
+// Route::post('register', 'ApiController@register');
 
-Route::group(['middleware' => ['jwt.verify']], function() {
-    Route::get('logout', 'ApiController@logout');
-    Route::get('get-user', 'ApiController@get_user');
-    Route::post('get-shipping-cost', 'ApiController@get_shipping_cost');
-});
+// Route::group(['middleware' => ['jwt.verify']], function() {
+//     Route::get('logout', 'ApiController@logout'); 
+//     Route::get('get-user', 'ApiController@get_user');
+//     Route::post('get-shipping-cost', 'ApiController@get_shipping_cost');
+//     Route::post('get-post', 'PostController@get_post');
+//     Route::post('add-post', 'PostController@add_post');
+// });

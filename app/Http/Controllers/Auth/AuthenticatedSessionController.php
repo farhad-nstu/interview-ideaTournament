@@ -26,13 +26,27 @@ class AuthenticatedSessionController extends Controller
      * @param  \App\Http\Requests\Auth\LoginRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(LoginRequest $request)
+    public function store(Request $request)
     {
-        $request->authenticate();
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required',
+        ]);
 
-        $request->session()->regenerate();
+        // admin login
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password,'role'=>1])) {
+            return redirect('admin/dashboard');
+        }
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        //logistics login
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password,'role'=>2])) {
+            return redirect('/');
+        }
+        // $request->authenticate();
+
+        // $request->session()->regenerate();
+
+        // return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**
